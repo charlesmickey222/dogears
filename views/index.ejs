@@ -2,7 +2,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1>howdy, <%= user ? user.profile.name : "reader, please log in to your google account to start tracking your books" %></h1>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
@@ -10,6 +10,9 @@
         alt="<%= user.profile.name %> avatar"
       />
     </div>
+  <% } %>
+  <% if (user) { %>
+      <a href="/books">collection of books</a>
   <% } %>
 </main>
 
