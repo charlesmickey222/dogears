@@ -1,7 +1,16 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %> 
 <form action="/books" method="POST">
+  <h1>book data</h1>
   <label for="title-input">Book Title</label>
   <input type="text" name="title" id="title-input">
+  <button type="submit">add Book</button>
 </form>
+<ul>
+<% books.forEach(book => { %>
+<li>
+  Book: <%= book.title %> 
+</li>
+<% }) %>
+</ul>
 <%- include('../partials/footer') %> 

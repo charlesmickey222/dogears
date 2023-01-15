@@ -18,14 +18,20 @@ function newBook(req,res){
 
 function create(req,res){
   req.body.poster = req.user.profile._id
+  req.body.readers.push(req.body.poster)
   Book.create(req.body)
   .then(book=>{
     res.redirect('/books')
   })
 }
 
+function deleteBook(req,res){
+  Book.findByIdAndDelete(req.body.id,)
+}
+
 export{
 index,
 newBook as new,
 create,
+deleteBook as delete,
 }
