@@ -2,8 +2,8 @@
 <%- include('../partials/nav') %> 
 <% if (user) { %>
   <form action="/books" method="POST">
-    <label for="title-input">Book Title</label>
-    <input type="text" name="title" id="title-input">
+    <label for="name-input">Book Title</label>
+    <input type="text" name="name" id="name-input">
     <button type="submit">add Book</button>
   </form>
 <% }else{ %>
@@ -12,7 +12,10 @@
 <ul>
 <% books.forEach(book => { %>
 <li>
-  Book: <a href="/books/<%book._id%>"><%= book.title %></a>
+  Book: <a href="/books/<%=book._id%>"> <%= book.name %></a> 
+  <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
+    <button>x</button>
+  </form>
 </li>
 <% }) %>
 </ul>

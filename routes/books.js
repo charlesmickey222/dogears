@@ -9,7 +9,9 @@ router.get('/', booksCtrl.index);
 
 router.post('/', booksCtrl.create)
 
-router.get('/books/:id', booksCtrl.show)
+router.get('/:id', booksCtrl.show)
+
+router.delete('/:id', isLoggedIn, booksCtrl.delete)
 
 export{
   router,

@@ -18,23 +18,30 @@ function create(req,res){
   })
 }
 
-function deleteBook(req,res){
-  Book.findByIdAndDelete(req.body.id,)
-}
-
 function show(req,res){
   Book.findById(req.params.id)
   .then(book=>{
-    res.render('book/show',{
+    res.render('books/show',{
       title:'Detail View',
       book:book,
     })
   })
 }
 
+function deleteBook(req,res){
+  Book.findByIdAndDelete(req.params.id)
+  .then(book=>{
+    res.redirect('/books')
+  })
+  .catch(err=>{
+    console.log(err)
+    res.redirect('/books')
+  })
+}
+
 export{
 index,
 create,
+show,
 deleteBook as delete,
-show
 }
