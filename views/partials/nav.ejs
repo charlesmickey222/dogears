@@ -5,6 +5,7 @@
 <body>
   <nav>
     <% if (user) { %>
+      <a><%= user.name %> </a>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
       </a>

@@ -1,6 +1,15 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %> 
 
-  Book: <a><%= book.name %></a>
-
+  <h1>Book: <a><%= book.name %></a></h1>
+  <% if (user) { %>
+    <% if (user.profile.name === book.poster.name) { %>
+      <a href="/books/<%= book.id%>/edit"> 
+      <button>Edit Book</button>
+      </a>
+      <% }else{ %> 
+        added by: <%= book.poster.name %> 
+  <% }}else{ %>
+    added by: <%= book.poster.name %> 
+    <% } %>
 <%- include('../partials/footer') %> 
