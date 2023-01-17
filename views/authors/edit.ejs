@@ -2,7 +2,12 @@
 <%- include('../partials/nav') %> 
 <form action="/authors/<%=author.id%>?_method=PUT" method="post">
   <label for="name-input">Author Name</label>
-  <input type="text" name="name" id="name-input">
+  <input type="text" name="name" id="name-input" value="<%author.name%>">
+  <select style="width:100px;" name="books" multiple="true">
+    <% books.forEach(book => { %>
+      <option value="<%= book._id%>"> <%= book.name %> </option>
+    <% }) %>
+  </select>
   <button>update</button>
 </form>
 <%- include('../partials/footer') %> 

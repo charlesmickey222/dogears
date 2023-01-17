@@ -16,9 +16,14 @@ function index(req,res){
 
 function create(req,res){
   req.body.poster = req.user.profile._id
+  req.body.authors = []
   Book.create(req.body)
+  .populate('poster')
   .then(book=>{
-    res.redirect('/books')
+    res.render(`books/show`,{
+      title:'Book',
+      book:book,
+    })
   })
   .catch(err=>{
     console.log(err)
@@ -31,7 +36,7 @@ function show(req,res){
   .populate("poster")
   .then(book=>{
     res.render('books/show',{
-      title:'Detail View',
+      title:'Book',
       book:book,
     })
   })

@@ -2,6 +2,9 @@
 <%- include('../partials/nav') %> 
 
 <h1>Author: <a><%= author.name %></a></h1>
+<% author.books.forEach(book => { %>
+  <div><%= book.name %> </div>
+<% }) %>
   <% if (user) { %>
     <% if (user.profile.name === author.poster.name) { %>
       <a href="/authors/<%= author.id%>/edit"> 
@@ -12,5 +15,5 @@
   <% }}else{ %>
     added by: <%= author.poster.name %> 
     <% } %>
-  
+
 <%- include('../partials/footer') %> 

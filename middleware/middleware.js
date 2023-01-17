@@ -9,7 +9,14 @@ function isLoggedIn(req, res, next) {
   res.redirect('/')
 }
 
+function updateBooks(req, res, next){
+  req.body.books.forEach(book=>{
+    book.authors.push(req.body._id)
+  })
+}
+
 export {
   passDataToView,
   isLoggedIn,
+  updateBooks,
 }

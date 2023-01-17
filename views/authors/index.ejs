@@ -1,11 +1,17 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %> 
 <% if (user) { %>
-  <form action="/authors" method="POST">
+  <form action="/authors" method="POST" id="author-form">
     <label for="name-input">Author</label>
     <input type="text" name="name" id="name-input">
     <label for="living-input">living?</label>
     <input type="checkbox" name="living" id="living-input">
+    <select style="width: 200px;" name="books" form="author-form" multiple>
+      <% books.forEach(book => { %>
+        <option value="<%= book._id%>"><div> <%= book.name %> </div></option>
+      
+      <% }) %>
+    </select>
     <button type="submit">add Author</button>
   </form>
 <% }else{ %>
@@ -15,6 +21,9 @@
 <% authors.forEach(author => { %>
 <li>
   Author: <a href="/authors/<%= author._id%>"><%= author.name %></a>
+  <form action="/authors/<%=author._id%>?_method=DELETE" method="POST">
+    <button>x</button>
+  </form>
 </li>
 <% }) %>
 </ul>

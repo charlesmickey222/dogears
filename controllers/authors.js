@@ -1,16 +1,22 @@
 import { Author } from "../models/author.js";
+import { Book } from "../models/book.js";
 
 function index(req,res){
 Author.find({})
 .then(authors=>{
+Book.find({})
+.populate("name")
+.then(books=>{
   res.render('authors/index',{
     title:'Authors',
     authors:authors,
+    books:books,
   })
 })
 .catch(err=>{
   console.log(err)
   res.redirect('/authors')
+})
 })
 }
 
@@ -29,32 +35,45 @@ function create(req,res){
 }
 
 function show(req,res){
+  Book.find({})
+  .then(books=>{
   Author.findById(req.params.id)
   .populate("poster")
+  .populate("books")
   .then(author=>{
     res.render('authors/show',{
       title:'author detailed view',
       author:author,
+      books:books
     })
   })
   .catch(err=>{
     console.log(err)
     res.redirect('/authors')
   })
+})
 }
 
 function edit(req,res){
+  Book.find({})
+  .then(books=>{
   Author.findById(req.params.id)
   .then(author=>{
     res.render('authors/edit',{
       title:'update author information',
       author:author,
+      books:books,
     })
   })
   .catch(err=>{
     console.log(err)
     res.redirect('/authors')
   })
+})
+.catch(err=>{
+  console.log(err)
+  res.redirect('/authors')
+})
 }
 
 function update(req,res){

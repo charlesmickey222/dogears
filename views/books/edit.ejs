@@ -2,7 +2,7 @@
 <%- include('../partials/nav') %> 
 <form action="/books/<%=book.id%>?_method=PUT" method="post">
   <label for="name-input">Book Title</label>
-  <input type="text" name="name" id="name-input">
+  <input type="text" name="name" id="name-input" value="<% book.name %>">
   <button>update</button>
 </form>
 <%- include('../partials/footer') %> 
