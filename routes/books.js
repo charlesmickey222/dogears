@@ -6,9 +6,10 @@ const router = Router();
 
 router.get('/', booksCtrl.index);
 
-router.get('/new', booksCtrl.new)
 
 router.post('/', booksCtrl.create)
+
+router.get('/books/:id', booksCtrl.show)
 
 export{
   router,
