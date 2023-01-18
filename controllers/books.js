@@ -35,6 +35,7 @@ function create(req,res){
 function show(req,res){
   Book.findById(req.params.id)
   .populate("poster")
+  .populate("authors")
   .then(book=>{
     res.render('books/show',{
       title:'Book',
@@ -60,11 +61,14 @@ function deleteBook(req,res){
 
 function edit(req,res){
   Book.findById(req.params.id)
-  .populate()
   .then(book=>{
-    res.render('books/edit',{
-      title:'update book information',
-      book:book,
+    Author.find({})
+    .then(authors=>{
+      res.render('books/edit',{
+        title:'update book information',
+        book:book,
+        authors:authors
+      })
     })
   })
   .catch(err=>{

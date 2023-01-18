@@ -6,6 +6,7 @@
     <input type="text" name="name" id="name-input">
     <label for="author-input">Author: </label>
     <select id="author-input" name="authors">
+      <option value=>add later</option>
       <% authors.forEach(author => { %>
         <option value="<%= author._id%>"> <%= author.name %> </option>
       <% }) %>
@@ -13,7 +14,7 @@
     <label for="pageCount-input">Pages:</label>
     <input type="number" name="pageCount" id="pageCount-input">
     <label for="yearPublished-input">Year published: </label>
-    <input type="number" name="yearPuslished" id="yearPublished-input" value=0000>
+    <input type="number" name="yearPublished" id="yearPublished-input" value=0000>
     <button type="submit">add Book</button>
   </form>
 <% }else{ %>

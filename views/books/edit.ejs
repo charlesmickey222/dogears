@@ -5,6 +5,15 @@
   <input type="text" name="name" id="name-input" value='<%= book.name %>'>
   <label for="pageCount-input">Pages:</label>
   <input type="number" name="pageCount" id="pageCount-input" value="<%=book.pageCount%>">
+  <label for="yearPublished-input">Year published: </label>
+  <input type="number" name="yearPublished" id="yearPublished-input" value=<%= book.yearPuslished%>>
+  <label for="author-input">Author: </label>
+  <select id="author-input" name="authors">
+    <option value=>add later</option>
+    <% authors.forEach(author => { %>
+      <option value="<%= author._id%>"> <%= author.name %> </option>
+    <% }) %>
+  </select> 
   <button>update</button>
 </form>
 <%- include('../partials/footer') %> 

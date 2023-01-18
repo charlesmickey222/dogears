@@ -13,5 +13,14 @@
   <%}} %>
 </div>
 <div> Pages: <%= book.pageCount %> </div>
+<div>year published: <%= book.yearPublished%></div>
+<div>
+  <h3>Authors:</h3>
+  <ul> 
+  <% book.authors.forEach(author => { %>
+    <%= author.name %> 
+  <% }) %>
+</ul>
+</div>
 
 <%- include('../partials/footer') %> 

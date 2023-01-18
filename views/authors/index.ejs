@@ -6,7 +6,8 @@
     <input type="text" name="name" id="name-input">
     <label for="living-input">living?</label>
     <input type="checkbox" name="living" id="living-input">
-    <select style="width: 200px;" name="books" form="author-form" multiple>
+    <label for="book-input">work published: </label>
+    <select style="width: 200px;" name="books" form="author-form" id="book-input">
       <% books.forEach(book => { %>
         <option value="<%= book._id%>"><div> <%= book.name %> </div></option>
       <% }) %>

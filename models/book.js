@@ -7,7 +7,6 @@ const bookSchema = new Schema({
   readers:[{type:Schema.Types.ObjectId, ref:"Profile"}],
   pageCount:Number,
   yearPublished:{type:Number, min:0, max:2023},
-  //comments stretch goal
 },{timestamps:true});
 const Book = mongoose.model('Book', bookSchema);
 export{
