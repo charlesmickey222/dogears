@@ -1,9 +1,29 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 <div id="profile-data"> 
-  <h1><%= profile.name %> </h1>
+  <h1> <%= profile.name %> </h1>
+  <div>
+      <form action="/dogears" method="POST" style="padding:20px;">
+        <label for="dogearBook-input">Book Bank:</label>
+        <select style="width:200px;" name="books" id="dogearBook-input">
+          <% books.forEach(book => { %>
+            <option value="<%= book._id%>"> <%= book.name %> </option>
+          <% }) %>
+        <input type="checkbox" name="started" id="started-input">
+        <label for="started-input"> started</label>
+        <input type="number" name="currentPage"
+        <input type="checkbox" name="completed" id="completed-input">
+        <label for="completed-input">Completed</label>
+        </select>
+      </form>
+    DogEars:
   <% if (profile.dogears.length){profile.dogears.forEach(dogear => { %>
-
   <% })} %>
+  </div>
+  <div>
+    Library:
+    <% if (profile.library.length){profile.library.forEach(book => { %>
+      <% })} %>
+  </div>
 </div>
 <%- include('../partials/footer') %>

@@ -4,7 +4,7 @@
   <label for="name-input">Author Name</label>
   <input type="text" name="name" id="name-input" value="<%author.name%>">
   <label for="authorBooks-input">books written: </label>
-  <select style="width:200px;" name="authors" id="authorBooks-input">
+  <select style="width:200px;" name="books" id="authorBooks-input">
     <% books.forEach(book => { %>
       <option value="<%= book._id%>"> <%= book.name %> </option>
     <% }) %>
