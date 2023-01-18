@@ -8,8 +8,9 @@
       <a href="/auth/logout" class="right nav-link">
         <button type="submit">Logout</button>
       </a>
-      <a href="/books" class="nav-link">Book Bank</a>
-      <a href="/authors" class="nav-link">authors</a>
+      <a href="/profiles/<%=user.profile._id%>" class="nav-link"><button type="submit">profile</button></a>
+      <a href="/books" class="nav-link"><button type="submit">book bank</button></a>
+      <a href="/authors" class="nav-link"><button type="submit">authors</button></a>
     <% } else { %>
       <div 
         id="g_id_onload"

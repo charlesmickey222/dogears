@@ -2,13 +2,21 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+const dogearSchema = new Schema({
+  book:{type:Schema.Types.ObjectId, ref:"Book"},
+  started:Boolean,
+  currentPage:Number,
+  completed:Boolean,
+  owner:{type:Schema.Types.ObjectId, ref:"Profile"}
+  
+},{timestamps:true})
+
 const profileSchema = new Schema({
   name: String,
   avatar: String,
   googleID:String,
-  //dogears
-  //savedAuthors
-  library:[{type:Schema.Types.ObjectId, ref:"Book"}]
+  library:[{type:Schema.Types.ObjectId, ref:"Book"}],
+  dogears:[dogearSchema],
 }, {
   timestamps: true
 })
