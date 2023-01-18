@@ -5,12 +5,11 @@
 <body>
   <nav class="navbar navbar-dark bg-dark">
     <% if (user) { %>
-      <a><%= user.name %> </a>
-      <a href="/auth/logout" class="right">
+      <a href="/auth/logout" class="right nav-link">
         <button type="submit">Logout</button>
       </a>
-      <a href="/books">Book Bank</a>
-      <a href="/authors">authors</a>
+      <a href="/books" class="nav-link">Book Bank</a>
+      <a href="/authors" class="nav-link">authors</a>
     <% } else { %>
       <div 
         id="g_id_onload"

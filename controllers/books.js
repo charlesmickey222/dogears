@@ -24,10 +24,7 @@ function create(req,res){
   req.body.authors = []
   Book.create(req.body)
   .then(book=>{
-    res.render(`books/show`,{
-      title:'Book',
-      book:book,
-    })
+    res.redirect('/books')
   })
   .catch(err=>{
     console.log(err)

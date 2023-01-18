@@ -1,16 +1,16 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %> 
 
-<div>Book: <a><%= book.name %></a></div>
+<h1>Book: <%= book.name %></h1>
 <div>
   <% if (user) { %>
     <% if (book.poster.equals(user.profile)) { %>
       <a href="/books/<%= book._id%>/edit">
       <button>Edit Book</button>
       </a>
-  <%}%> 
-    posted by: <%= book.poster %> 
-  <%} %>
+  <%}else{%> 
+    <h2>posted by: <%= book.poster.name %></h2>
+  <%}} %>
 </div>
 <div> Pages: <%= book.pageCount %> </div>
 

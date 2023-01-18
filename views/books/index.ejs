@@ -2,15 +2,18 @@
 <%- include('../partials/nav') %> 
 <% if (user) { %>
   <form action="/books" method="POST">
-    <label for="name-input">Book Title</label>
+    <label for="name-input">Book Title: </label>
     <input type="text" name="name" id="name-input">
-      <select name="authors" multiple>
+    <label for="author-input">Author: </label>
+    <select id="author-input" name="authors">
       <% authors.forEach(author => { %>
         <option value="<%= author._id%>"> <%= author.name %> </option>
       <% }) %>
     </select> 
     <label for="pageCount-input">Pages:</label>
     <input type="number" name="pageCount" id="pageCount-input">
+    <label for="yearPublished-input">Year published: </label>
+    <input type="number" name="yearPuslished" id="yearPublished-input" value=0000>
     <button type="submit">add Book</button>
   </form>
 <% }else{ %>
