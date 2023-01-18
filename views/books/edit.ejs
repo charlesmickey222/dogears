@@ -2,7 +2,9 @@
 <%- include('../partials/nav') %> 
 <form action="/books/<%=book.id%>?_method=PUT" method="post">
   <label for="name-input">Book Title</label>
-  <input type="text" name="name" id="name-input" value="<% book.name %>">
+  <input type="text" name="name" id="name-input" value='<%= book.name %>'>
+  <label for="pageCount-input">Pages:</label>
+  <input type="number" name="pageCount" id="pageCount-input" value="<%=book.pageCount%>">
   <button>update</button>
 </form>
 <%- include('../partials/footer') %> 

@@ -1,12 +1,17 @@
 import { Book } from "../models/book.js";
+import { Author } from "../models/author.js";
 
 function index(req,res){
   Book.find({})
   .then(books=>{
+    Author.find({})
+    .then(authors=>{
     res.render('books/index',{
       title:'Books',
       books,
+      authors,
     })
+  })
   })
   .catch(err=>{
     console.log(err)
@@ -18,7 +23,6 @@ function create(req,res){
   req.body.poster = req.user.profile._id
   req.body.authors = []
   Book.create(req.body)
-  .populate('poster')
   .then(book=>{
     res.render(`books/show`,{
       title:'Book',
@@ -59,6 +63,7 @@ function deleteBook(req,res){
 
 function edit(req,res){
   Book.findById(req.params.id)
+  .populate()
   .then(book=>{
     res.render('books/edit',{
       title:'update book information',

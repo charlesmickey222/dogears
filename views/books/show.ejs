@@ -4,14 +4,13 @@
 <div>Book: <a><%= book.name %></a></div>
 <div>
   <% if (user) { %>
-    <% if (user.profile._id === book.poster._id) { %>
+    <% if (book.poster.equals(user.profile)) { %>
       <a href="/books/<%= book._id%>/edit">
       <button>Edit Book</button>
       </a>
-    <%  %>
-  <%} else { %> 
-    posted by: <%= book.poster.name %> 
-  <%}} %>
+  <%}%> 
+    posted by: <%= book.poster %> 
+  <%} %>
 </div>
 <div> Pages: <%= book.pageCount %> </div>
 
