@@ -55,25 +55,19 @@ function show(req,res){
 }
 
 function edit(req,res){
-  Book.find({})
-  .then(books=>{
   Author.findById(req.params.id)
+  .populate("books")
   .then(author=>{
     res.render('authors/edit',{
       title:'update author information',
       author:author,
-      books:books,
+    
     })
   })
   .catch(err=>{
     console.log(err)
     res.redirect('/authors')
   })
-})
-.catch(err=>{
-  console.log(err)
-  res.redirect('/authors')
-})
 }
 
 function update(req,res){

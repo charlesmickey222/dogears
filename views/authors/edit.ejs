@@ -3,9 +3,10 @@
 <form action="/authors/<%=author.id%>?_method=PUT" method="post">
   <label for="name-input">Author Name</label>
   <input type="text" name="name" id="name-input" value="<%author.name%>">
-  <select style="width:200px;" name="authors" multiple>
-    <% authors.forEach(author => { %>
-      <option value="<%= author._id%>"> <%= author.name %> </option>
+  <label for="authorBooks-input">books written: </label>
+  <select style="width:200px;" name="authors" id="authorBooks-input">
+    <% books.forEach(book => { %>
+      <option value="<%= book._id%>"> <%= book.name %> </option>
     <% }) %>
   </select>
   <button>update</button>
