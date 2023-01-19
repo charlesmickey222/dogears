@@ -7,7 +7,7 @@
 <% }) %>
   <% if (user) { %>
     <% if (author.poster.equals(user.profile)) { %>
-      <a href="/authors/<%= author.id%>/edit"> 
+      <a href="/authors/<%= author._id%>/edit"> 
       <button>Edit Author</button>
       </a>
       <% }else{ %> 

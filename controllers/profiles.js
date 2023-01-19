@@ -9,7 +9,7 @@ function show(req,res){
       Book.find({})
       .then(books=>{
       const ownsProfile = (profile._id === req.user.profile._id)
-      res.render('profile/show',{
+      res.render('profiles/show',{
         title:"Library",
         profile:profile,
         ownsProfile,
@@ -27,10 +27,11 @@ function show(req,res){
     })
 }
 function newDogear(req,res){
-Profile.findById(req.user.profile._id)
-.then(profile=>{
-  res.render('profile/new',{
-    title:"New Dogear",
+  Book.find({})
+  Profile.findById(req.user.profile._id)
+  .then((profile)=>{
+  res.render('profiles/newDogear',{
+    title:'add a dogear',
   })
 })
 .catch(err => {
@@ -38,6 +39,8 @@ Profile.findById(req.user.profile._id)
   res.redirect(`/books`)
 })
 }
+
+
 
 function saveBook(req,res){
   console.log(req.body)

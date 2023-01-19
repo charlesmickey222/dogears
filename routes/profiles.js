@@ -8,7 +8,7 @@ router.get('/:id', isLoggedIn, profilesCtrl.show)
 
 router.post('/:id/library/:id', isLoggedIn, profilesCtrl.saveBook)
 
-router.get('/:id/newDogear', isLoggedIn, profilesCtrl.newDogear)
+router.get('/:id/dogears', isLoggedIn, profilesCtrl.newDogear)
 
 router.post(':id/dogears', isLoggedIn)
 

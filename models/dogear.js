@@ -7,12 +7,12 @@ const dogearSchema = new Schema({
   started:Boolean,
   currentPage:Number,
   completed:Boolean,
-  notes:[{type:String}],
+  notes:{type:String},
   owner:{type:Schema.Types.ObjectId, ref:"Profile"},
 
 },{timestamps:true})
 
-const Dogear = mongoose.Model('Dogear', dogearSchema)
+const Dogear = mongoose.model('Dogear', dogearSchema)
 
 export{
   Dogear

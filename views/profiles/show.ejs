@@ -2,6 +2,9 @@
 <%- include('../partials/nav') %>
 <div id="profile-data"> 
   <h1> <%= profile.name %> </h1>
+  <form action="/profiles/<%=profile._id%>/dogears" method="get">
+    <button type="submit">add a dogear</button>
+  </form>
   <div>
     DogEars:
 
@@ -16,9 +19,8 @@
             <p class="card-subtitle mb-1">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">length: <%= book.pageCount %> </li>
-              <li class="list-group-item"><form action="/profiles/<%=profile._id%>/newDogear" method="get">
-                <button type="submit">add a dogear</button>
-              </form></li>
+              <li class="list-group-item">
+              </li>
       </li>
     <% }) %>
     </ul>
