@@ -2,51 +2,26 @@
 <%- include('../partials/nav') %>
 <div id="profile-data"> 
   <h1> <%= profile.name %> </h1>
-
-      <form action="/profiles/<%=profile._id%>/dogears" method="POST" style="padding:20px;">
-        <div class="mb-3">
-          <label class="form-label" for="dogearBook-input">Book Bank:</label>
-          <select style="width: 100px;" name="book" id="dogearBook-input">
-            <% books.forEach(book => { %>
-              <option value="<%= book._id%>"> <%= book.name %> </option>
-            <% }) %>
-          </select>
-        </div>
-        <div class="mb-3 form-check">
-          <label class="form-label" for="started-input"> started </label>
-          <input type="checkbox" name="started" id="started-input">
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="currentPage-input">Current Page</label>
-          <input  class="form-control" type="number" name="currentPage" id="currentPage-input"  value=0>
-        </div>
-        <div class="mb-3 form-check">
-          <label class="form-label" for="completed-input">Completed</label>
-          <input type="checkbox" name="completed" id="completed-input" value=' '>
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="notes-input">Where'd you leave off?</label>
-          <textarea class="form-control" id="notes-input" name="notes" rows="5" columns="40"></textarea>
-        </div>
-        <button type="submit">add dogear</button>
-      </form>
   <div>
-    <ul>
     DogEars:
-  <% if (profile.dogears.length){profile.dogears.forEach(dogear => { %>
-    <li>
-      <div class="card">
-        <h3 class="card-title">Title:<%= dogear.name %> </h3>
-        <div class="card-subtitle"> <%= dogear.started ? 'currently reading':'in the queue'%> </div>
-      </div>
-    </li>
-  <% })} %>
-  </ul>
+
   </div>
   <div>
+    <ul>
     Library:
-    <% if (profile.library.length){profile.library.forEach(book => { %>
-      <% })} %>
+    <% profile.library.forEach(book => { %>
+      <li>
+          <div class="card" style="width:30rem; float:left; padding:2px; margin:5rem;">
+            <h4 class="card-title"><%= book.name %></h4>
+            <p class="card-subtitle mb-1">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">length: <%= book.pageCount %> </li>
+              <li class="list-group-item"><form action="/profiles/<%=profile._id%>/newDogear" method="get">
+                <button type="submit">add a dogear</button>
+              </form></li>
+      </li>
+    <% }) %>
+    </ul>
   </div>
 </div>
 <%- include('../partials/footer') %>

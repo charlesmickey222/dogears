@@ -1,9 +1,9 @@
 import { Profile } from "../models/profile.js";
 import { Book } from "../models/book.js"
+import { Dogear } from "../models/dogear.js";
 
 function show(req,res){
     Profile.findById(req.user.profile._id)
-    .populate("dogears.book")
     .populate("library")
     .then(profile=>{
       Book.find({})
@@ -16,40 +16,45 @@ function show(req,res){
         books
         })
       })
-    })
-}
-
-function createDogear(req,res){
-  req.body.started = Boolean(req.body.started)
-  req.body.completed = Boolean(req.body.completed)
-  Book.findById(req.body.book)
-  .then(book=>{
-    req.body.book=book
-    Profile.findById(req.user.profile._id)
-      .then(profile=>{
-
-        profile.dogears.push(req.body)
-        profile.save()
-        .then(()=>{
-          res.redirect(`/profiles/${req.user.profile._id}`)
-        })
-        .catch(err => {
-          console.log(err)
-          res.redirect(`/profiles/${req.user.profile._id}`)
-        })
-      })
       .catch(err => {
         console.log(err)
-        res.redirect(`/profiles/${req.user.profile._id}`)
+        res.redirect(`/books`)
       })
     })
     .catch(err => {
       console.log(err)
-      res.redirect(`/profiles/${req.user.profile._id}`)
+      res.redirect(`/books`)
     })
+}
+function newDogear(req,res){
+Profile.findById(req.user.profile._id)
+.then(profile=>{
+  res.render('profile/new',{
+    title:"New Dogear",
+  })
+})
+.catch(err => {
+  console.log(err)
+  res.redirect(`/books`)
+})
+}
+
+function saveBook(req,res){
+  console.log(req.body)
+  Profile.findById(req.user.profile._id)
+  .then(profile=>{
+    profile.library.push(req.body.targetBook)
+    profile.save()
+    res.redirect('/books')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/books`)
+  })
 }
 
 export{
   show,
-  createDogear,
+  saveBook,
+  newDogear,
 }

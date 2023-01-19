@@ -6,8 +6,11 @@ const router = Router()
 
 router.get('/:id', isLoggedIn, profilesCtrl.show)
 
-router.post('/:id/dogears', isLoggedIn, profilesCtrl.createDogear)
+router.post('/:id/library/:id', isLoggedIn, profilesCtrl.saveBook)
 
+router.get('/:id/newDogear', isLoggedIn, profilesCtrl.newDogear)
+
+router.post(':id/dogears', isLoggedIn)
 
 export {
   router

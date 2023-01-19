@@ -6,7 +6,7 @@
     <input type="text" name="name" id="name-input">
     <label for="author-input">Author: </label>
     <select id="author-input" name="authors">
-      <option value=>add later</option>
+      <option value='' disabled selected>add later</option>
       <% authors.forEach(author => { %>
         <option value="<%= author._id%>"> <%= author.name %> </option>
       <% }) %>
@@ -17,17 +17,22 @@
     <input type="number" name="yearPublished" id="yearPublished-input" value=0000>
     <button type="submit">add Book</button>
   </form>
+  <ul>
+    <% books.forEach(book => { %>
+    <li>
+      Book: <a href="/books/<%=book._id%>"> <%= book.name %></a>
+      <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>" method="POST">
+        <input type="hidden" value="<%=book._id%>" name="targetBook">
+        <button type="submit">save to your Library</button>
+      </form>
+      <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
+        <button type="submit">x</button>
+      </form>
+    </li>
+    <% }) %>
+    </ul>
 <% }else{ %>
-  <h1>Log In to add a book</h1>
+  <h1>Log In to add and see books</h1>
 <%} %>
-<ul>
-<% books.forEach(book => { %>
-<li>
-  Book: <a href="/books/<%=book._id%>"> <%= book.name %></a> 
-  <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
-    <button>x</button>
-  </form>
-</li>
-<% }) %>
-</ul>
+
 <%- include('../partials/footer') %> 

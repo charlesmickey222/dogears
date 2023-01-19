@@ -1,5 +1,6 @@
 import { Book } from "../models/book.js";
 import { Author } from "../models/author.js";
+import { Profile } from "../models/profile.js";
 
 function index(req,res){
   Book.find({})
@@ -21,6 +22,8 @@ function index(req,res){
 
 function create(req,res){
   req.body.poster = req.user.profile._id
+  let temp = req.body.authors
+  req.body.authors = [temp]
   Book.create(req.body)
   .then(book=>{
     res.redirect('/books')
@@ -87,6 +90,7 @@ function update(req,res){
       res.redirect('/books')
     })
 }
+
 
 export{
 index,

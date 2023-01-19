@@ -1,0 +1,12 @@
+<%- include('../partials/html-head') %>
+  <%- include('../partials/nav') %>
+    <h1>
+      Start Tracking your progress for '<%=  %>'
+    </h1>
+    <form action="/profiles/<%= user.profile._id %>/newDogear" method="POST">
+      <input type="number" name="currentPage" id="currentPage-input" placeholder="0" aria-placeholder="current page">
+      <label for="notes-input">Notes?</label>
+      <textarea name="notes" id="notes-input"></textarea>
+      <button type="submit">add a dogear</button>
+    </form>
+    <%- include('../partials/footer') %>
