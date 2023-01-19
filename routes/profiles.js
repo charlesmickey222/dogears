@@ -6,6 +6,8 @@ const router = Router()
 
 router.get('/:id', isLoggedIn, profilesCtrl.show)
 
+router.post('/:id/dogears', isLoggedIn, profilesCtrl.createDogear)
+
 
 export {
   router

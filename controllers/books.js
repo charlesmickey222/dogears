@@ -21,7 +21,6 @@ function index(req,res){
 
 function create(req,res){
   req.body.poster = req.user.profile._id
-  req.body.authors = []
   Book.create(req.body)
   .then(book=>{
     res.redirect('/books')

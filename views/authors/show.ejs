@@ -6,7 +6,7 @@
   <div><%= book.name %> </div>
 <% }) %>
   <% if (user) { %>
-    <% if (user.profile.name === author.poster.name) { %>
+    <% if (author.poster.equals(user.profile)) { %>
       <a href="/authors/<%= author.id%>/edit"> 
       <button>Edit Author</button>
       </a>

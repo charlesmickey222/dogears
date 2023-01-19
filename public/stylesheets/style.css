@@ -51,3 +51,9 @@ main {
   margin-left: auto;
   border: none;
 }
+.card{
+  width:30rem; 
+  float:left; 
+  padding:2px; 
+  margin:5rem;
+}

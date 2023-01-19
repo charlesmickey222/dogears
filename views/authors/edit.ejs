@@ -1,14 +1,15 @@
 <%- include('../partials/html-head') %> 
-<%- include('../partials/nav') %> 
+<%- include('../partials/nav') %>
+<h1><%= author.name %> </h1>
 <form action="/authors/<%=author.id%>?_method=PUT" method="post">
-  <label for="name-input">Author Name</label>
-  <input type="text" name="name" id="name-input" value="<%author.name%>">
+  <label for="living-input">living?</label>
+  <input type="checkbox" name="living" id="living-input">
   <label for="authorBooks-input">books written: </label>
   <select style="width:200px;" name="books" id="authorBooks-input">
     <% books.forEach(book => { %>
       <option value="<%= book._id%>"> <%= book.name %> </option>
     <% }) %>
   </select>
-  <button>update</button>
+  <button type="submit">update author</button>
 </form>
 <%- include('../partials/footer') %> 
