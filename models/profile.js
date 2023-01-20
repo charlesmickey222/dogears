@@ -7,7 +7,7 @@ const profileSchema = new Schema({
   avatar: String,
   googleID:String,
   library:[{type:Schema.Types.ObjectId, ref:"Book"}],
-  dogears:[{type:Schema.Types.ObjectId, ref:"Dogears"}]
+  dogears:[{type:Schema.Types.ObjectId, ref:"Dogear"}]
 }, {
   timestamps: true
 })

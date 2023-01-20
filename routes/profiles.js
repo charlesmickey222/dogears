@@ -10,7 +10,9 @@ router.post('/:id/library/:id', isLoggedIn, profilesCtrl.saveBook)
 
 router.get('/:id/dogears', isLoggedIn, profilesCtrl.newDogear)
 
-router.post(':id/dogears', isLoggedIn)
+router.post('/:id/dogears', isLoggedIn, profilesCtrl.createDogear)
+
+router.get('/:id/dogears/:id', isLoggedIn, profilesCtrl.editDogear)
 
 export {
   router

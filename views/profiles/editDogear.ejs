@@ -1,0 +1,17 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+  <h1><%= dogear.name %></h1>
+  <form id="update-form" action="/profiles/<%=user.profile._id%>/dogears/<%=dogear._id%>?_method=PUT" method="POST">
+      <label for="currentPage-input">Current page</label>
+      <input type="number" name="currentPage" id="currentPage-input" value=<%= dogear.curentPage %>>
+
+      <label for="notes-input">Notes:</label>
+      <textarea name="notes" id="notes-input" value="<%=dogear.notes %>"></textarea>
+
+      <label for="editStarted-input">Started:</label>
+      <input type="checkbox" name="started" id="editStarted-input" value="<%=dogear.started%>">
+      <label for="editCompleted-input">Finished:</label>
+      <input type="checkbox" name="completed" id="editCompleted-input">
+      <button type="submit">update</button>
+    </form>
+<%- include('../partials/footer') %>

@@ -1,11 +1,15 @@
 <%- include('../partials/html-head') %>
   <%- include('../partials/nav') %>
-  <form action="/profiles/<%= user.profile._id %>/DogEars" method="POST"></form>
-      <div>
-          Start Tracking your progress for '<%=  %>'
-      </div>
-      <input type="number" name="currentPage" id="currentPage-input" placeholder="0" aria-placeholder="current page">
-      <label for="notes-input">Notes?</label>
+  <form action="/profiles/<%= user.profile._id %>/dogears" method="POST">
+          <select style="width: 200px;" name="book" id="book-input">
+            <% books.forEach(book=> { %>
+              <option value="<%= book._id%>"> 
+                <%= book.name %> 
+              </option>
+              <% }) %>
+          </select>
+      <input type="number" name="currentPage" id="currentPage-input" >
+      <label for="notes-input">Notes:</label>
       <textarea name="notes" id="notes-input"></textarea>
       <button type="submit">add a dogear</button>
     </form>

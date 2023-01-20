@@ -6,21 +6,41 @@
     <button type="submit">add a dogear</button>
   </form>
   <div>
-    DogEars:
-
+    <label for="dogear-library">Current Books</label>
+    <ul id="dogear-library" style="list-style: none;">
+    <% profile.dogears.forEach(dogear => { %>
+      <li>
+          <div class="card" style="width:30rem; float:left; padding:2px; margin:5rem;">
+            <h4 class="card-title"><%= dogear.book.name %></h4>
+            <p class="card-subtitle mb-1">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">started:<% if (dogear.started){%> &check; <% } %></li>
+              <li class="list-group-item">current page: <%= dogear.currentPage %> </li>
+              <li class="list-group-item">
+                <form action="/profiles/<%=user.profile._id%>/dogears/<%=dogear._id%>" method="GET">
+                  <button> update dogear</button>
+                </form>
+                <form action="/profiles/<%= user.profile._id %>/dogears/<%= dogear._id %>?_method=DELETE" method="post">
+                  <button> delete dogear</button>
+                </form>
+              </li>
+            </ul>
+      </li>
+    <% }) %>
+    </ul>
   </div>
   <div>
-    <ul>
-    Library:
+    <label for="library">Saved Books</label>
+    <ul id="library" style="list-style: none;">
     <% profile.library.forEach(book => { %>
       <li>
           <div class="card" style="width:30rem; float:left; padding:2px; margin:5rem;">
             <h4 class="card-title"><%= book.name %></h4>
             <p class="card-subtitle mb-1">
             <ul class="list-group list-group-flush">
+              <li class="list-group-item">author: <%= book.author %></li>
               <li class="list-group-item">length: <%= book.pageCount %> </li>
-              <li class="list-group-item">
-              </li>
+            </ul>
       </li>
     <% }) %>
     </ul>

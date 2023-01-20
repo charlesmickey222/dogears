@@ -80,7 +80,6 @@ function edit(req,res){
 }
 
 function update(req,res){
-    req.body.poster = req.user.profile._id
     Book.findByIdAndUpdate(req.params.id, req.body, {new:true})
     .then(book=>{
       res.redirect('/books')
