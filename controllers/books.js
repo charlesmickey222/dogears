@@ -24,6 +24,7 @@ function create(req,res){
   req.body.poster = req.user.profile._id
   let temp = req.body.authors
   req.body.authors = [temp]
+  req.body.
   Book.create(req.body)
   .then(book=>{
     res.redirect('/books')
@@ -80,8 +81,15 @@ function edit(req,res){
 }
 
 function update(req,res){
-    Book.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    Book.findById(req.params.id)
     .then(book=>{
+      if (req.body.authors.length){
+        book.authors.push(req.body.authors)
+      }
+      book.name = req.body.name
+      if(req.body.yearPublished!==0){book.yearPublished = req.body.yearPublished}
+      if(req.body.pageCount!==0){book.pageCount = req.body.pageCount}
+      book.save()
       res.redirect('/books')
     })
     .catch(err=>{
