@@ -101,8 +101,14 @@ function updateDogear(req,res){
   })
 }
 
+function deleteDogear(req,res){
+  Dogear.findByIdAndDelete(req.params.id)
+  .then(()=>{
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
 function saveBook(req,res){
-  console.log(req.body)
   Profile.findById(req.user.profile._id)
   .then(profile=>{
     profile.library.push(req.body.targetBook)
@@ -121,5 +127,6 @@ export{
   newDogear,
   createDogear,
   editDogear,
-  updateDogear
+  updateDogear,
+  deleteDogear,
 }

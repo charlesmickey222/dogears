@@ -16,6 +16,8 @@ router.get('/:id/dogears/:id', isLoggedIn, profilesCtrl.editDogear)
 
 router.put('/:id/dogears/:id', isLoggedIn, profilesCtrl.updateDogear)
 
+router.delete('/:id/dogears/:id', isLoggedIn, profilesCtrl.deleteDogear)
+
 export {
   router
 }
