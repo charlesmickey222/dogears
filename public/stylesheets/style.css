@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background-color: #1a1a1a;
+  background-color: #000000;
   color: #f6f6f6;
   /* Use a system font, if none are available use any found sans-sarif font */
   font-family: system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 
@@ -22,7 +22,6 @@ body {
 
 nav {
   background-color: #f6f6f6;
-  color: #1a1a1a;
   align-items: center;
   padding: 20px;
   min-height: 60px;
@@ -38,6 +37,7 @@ button{
   display: inline-block;
 }
 .navbar{
+  background-color: aliceblue;
   color:white;
   text-decoration: none;
 }
@@ -57,3 +57,5 @@ button{
   padding:2px; 
   margin:5rem;
 }
+
+

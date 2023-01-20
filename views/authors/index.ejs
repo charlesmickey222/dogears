@@ -1,19 +1,29 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %> 
 <% if (user) { %>
-  <form action="/authors" method="POST" id="author-form">
-    <label for="name-input">Author</label>
-    <input type="text" name="name" id="name-input">
-    <label for="living-input">living?</label>
-    <input type="checkbox" name="living" id="living-input">
-    <label for="book-input">work published: </label>
-    <select style="width: 200px;" name="books" form="author-form" id="book-input">
-      <% books.forEach(book => { %>
-        <option value="<%= book._id%>"><div> <%= book.name %> </div></option>
-      <% }) %>
-    </select>
-    <button type="submit">add Author</button>
-  </form>
+  <div class="card">
+    <form action="/authors" method="POST" id="author-form">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <label for="name-input">Author</label>
+          <input type="text" name="name" id="name-input">
+        </li>
+        <li class="list-group-item">
+          <label for="living-input">living?</label>
+          <input type="checkbox" name="living" id="living-input">
+        </li>
+        <li class="list-group-item">
+          <label for="book-input">work published: </label>
+          <select style="width: 200px;" name="books" form="author-form" id="book-input">
+            <% books.forEach(book => { %>
+              <option value="<%= book._id%>"><div> <%= book.name %> </div></option>
+            <% }) %>
+          </select>
+        </li>
+        <button type="submit">add Author</button>
+    </ul>
+    </form>
+  </div>
 <% }else{ %>
   <h1>Log In to add an Author</h1>
 <%} %>

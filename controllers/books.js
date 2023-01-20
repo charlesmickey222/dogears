@@ -3,20 +3,24 @@ import { Author } from "../models/author.js";
 import { Profile } from "../models/profile.js";
 
 function index(req,res){
-  Book.find({})
-  .then((books)=>{
-    Author.find({})
-    .then(authors=>{
-    res.render('books/index',{
-      title:'Books',
-      books,
-      authors,
+  Profile.findById(req.user.profile._id)
+  .then(profile =>{
+    Book.find({})
+    .then((books)=>{
+      Author.find({})
+      .then(authors=>{
+        res.render('books/index',{
+          title:'Books',
+          books,
+          authors,
+          profile
+        })
     })
-  })
-  })
-  .catch(err=>{
-    console.log(err)
-    res.redirect('/books')
+    })
+    .catch(err=>{
+      console.log(err)
+      res.redirect('/books')
+    })
   })
 }
 

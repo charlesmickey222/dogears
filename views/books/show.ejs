@@ -8,9 +8,6 @@
       <a href="/books/<%= book._id%>/edit">
       <button>Edit Book</button>
       </a>
-      <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
-        <button type="submit">x</button>
-      </form>
   <%}else{%> 
     <h2>posted by: <%= book.poster.name %></h2>
   <%}} %>
@@ -25,5 +22,10 @@
   <% }) %>
 </ul>
 </div>
-
+<% if (user) { %>
+  <% if (book.poster.equals(user.profile)) { %>
+    <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
+      <button type="submit">delete this book from the site</button>
+    </form>
+  <%}} %>
 <%- include('../partials/footer') %> 

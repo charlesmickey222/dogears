@@ -1,31 +1,45 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %> 
-<% if (user) { %>
-  <form action="/books" method="POST">
-    <label for="name-input">Book Title: </label>
-    <input type="text" name="name" id="name-input">
-    <label for="author-input">Author: </label>
-    <select id="author-input" name="authors">
-      <option value='' disabled selected>add later</option>
-      <% authors.forEach(author => { %>
-        <option value="<%= author._id%>"> <%= author.name %> </option>
-      <% }) %>
-    </select> 
-    <label for="pageCount-input">Pages:</label>
-    <input type="number" name="pageCount" id="pageCount-input">
-    <label for="yearPublished-input">Year published: </label>
-    <input type="number" name="yearPublished" id="yearPublished-input" value=0000>
-    <button type="submit">add Book</button>
+<% if (user && profile) { %>
+  <div class="card bg-black">
+  <form action="/books" method="POST" id="book-form">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <label for="name-input">Book Title: </label>
+        <input type="text" name="name" id="name-input">
+        </li>
+      <li class="list-group-item">
+        <label for="author-input">Author: </label>
+        <select id="author-input" name="authors">
+          <option value='' disabled selected>add later</option>
+          <% authors.forEach(author => { %>
+            <option value="<%= author._id%>"> <%= author.name %> </option>
+          <% }) %>
+        </select> 
+        </li>
+      <li class="list-group-item">
+          <label for="pageCount-input">Pages:</label>
+          <input type="number" name="pageCount" id="pageCount-input">
+        </li>
+      <li class="list-group-item">
+        <label for="yearPublished-input">Year published: </label>
+        <input type="number" name="yearPublished" id="yearPublished-input" value=0000>
+        </li>
+    <button type="submit">add to bank</button>
+  </ul>
   </form>
-  <ul>
+  </div>
+  <ul style="list-style:none;">
     <% books.forEach(book => { %>
     <li>
-      Book: <a href="/books/<%=book._id%>"> <%= book.name %></a>
-        <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>" method="POST">
-          <input type="hidden" value="<%=book._id%>" name="targetBook">
-          <button type="submit">save to your Library</button>
-        </form>
-      <% }) %>
+      <div class="card w-25 text-center">
+          <a href="/books/<%=book._id%>" style="font-size:28px;"> <%= book.name %></a> 
+            <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>" method="POST">
+              <input type="hidden" value="<%=book._id%>" name="targetBook">
+              <button type="submit" style="font-size:12px;">collect book</button>
+            </form>
+        <% }) %>
+    </div>
     </li>
     </ul>
 <% }else{ %>
