@@ -11,7 +11,7 @@
       <li class="list-group-item">
         <label for="author-input">Author: </label>
         <select id="author-input" name="authors">
-          <option value='' disabled selected>add later</option>
+          <option value='' disabled selected>not here? add later</option>
           <% authors.forEach(author => { %>
             <option value="<%= author._id%>"> <%= author.name %> </option>
           <% }) %>
@@ -29,19 +29,22 @@
   </ul>
   </form>
   </div>
-  <ul style="list-style:none;">
     <% books.forEach(book => { %>
-    <li>
-      <div class="card w-25 text-center">
-          <a href="/books/<%=book._id%>" style="font-size:28px;"> <%= book.name %></a> 
+
+      <div class="grid card-group w-30">
+        <div class="card text-center">
+          <div class="card-title">
+            <a href="/books/<%=book._id%>" style="font-size:28px;"> <%= book.name %></a> 
+          </div>
+          <div class ="card-body">
             <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>" method="POST">
               <input type="hidden" value="<%=book._id%>" name="targetBook">
               <button type="submit" style="font-size:12px;">collect book</button>
             </form>
+          </div>
+        </div>
+      </div>
         <% }) %>
-    </div>
-    </li>
-    </ul>
 <% }else{ %>
   <h1>Log In to add and see books</h1>
 <%} %>

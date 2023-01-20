@@ -1,5 +1,6 @@
 <%- include('../partials/html-head') %>
   <%- include('../partials/nav') %>
+  <div class="card">
   <form action="/profiles/<%= user.profile._id %>/dogears" method="POST">
           <select style="width: 200px;" name="book" id="book-input">
             <% books.forEach(book=> { %>
@@ -8,9 +9,11 @@
               </option>
               <% }) %>
           </select>
+      <label for="currentPage-input">current page:</label>
       <input type="number" name="currentPage" id="currentPage-input" >
       <label for="notes-input">Notes:</label>
       <textarea name="notes" id="notes-input"></textarea>
       <button type="submit">add a dogear</button>
     </form>
+  </div>
     <%- include('../partials/footer') %>

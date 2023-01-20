@@ -1,8 +1,8 @@
 <%- include('./partials/html-head') %>
 <%- include('./partials/nav') %>
 
-<main>
-  <h1>howdy, <%= user ? user.profile.name : "reader, please log in to your google account to start tracking your books" %></h1>
+<div class="card text-center w-100" style="margin:0 auto;">
+  <h4> <%= user ? user.profile.name : "reader, please log in to your google account to start tracking your books" %></h4>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
@@ -12,8 +12,11 @@
     </div>
   <% } %>
   <% if (user) { %>
-      <a href="/books">collection of books</a>
+    <h4>Welcome to Dogears!</h4>
+    <article>
+      Find and post books in the book bank, add pages for their authors to connect to them 
+    </article>
   <% } %>
-</main>
+</div>
 
 <%- include('./partials/footer') %>

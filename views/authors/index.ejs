@@ -5,7 +5,7 @@
     <form action="/authors" method="POST" id="author-form">
       <ul class="list-group">
         <li class="list-group-item">
-          <label for="name-input">Author</label>
+          <label for="name-input">name</label>
           <input type="text" name="name" id="name-input">
         </li>
         <li class="list-group-item">
@@ -14,7 +14,7 @@
         </li>
         <li class="list-group-item">
           <label for="book-input">work published: </label>
-          <select style="width: 200px;" name="books" form="author-form" id="book-input">
+          <select style="width: 200px;" name="books" form="author-form" id="book-input" multiple>
             <% books.forEach(book => { %>
               <option value="<%= book._id%>"><div> <%= book.name %> </div></option>
             <% }) %>

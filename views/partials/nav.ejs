@@ -5,7 +5,12 @@
 <body>
   <nav class="navbar navbar-dark bg-dark">
     <% if (user) { %>
-      <a href="/profiles/<%=user.profile._id%>" class="nav-link right"><button type="submit">profile</button></a>
+      <a href="/" class="nav-link"><button type="submit">home page</button></a>
+      <a href="/profiles/<%=user.profile._id%>" class="nav-link right"> 
+        <button type="submit"> 
+        <img style="height:28px;width:28px;border:1px solid beige;border-radius:50%;" src="<%= user.profile.avatar %>" alt="<%= user.profile.name %> avatar"/>
+        profile
+      </button></a>
       <a href="/books" class="nav-link"><button type="submit">book bank</button></a>
       <a href="/authors" class="nav-link"><button type="submit">authors</button></a>
       <a href="/auth/logout" class="nav-link">

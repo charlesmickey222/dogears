@@ -52,10 +52,15 @@ button{
   border: none;
 }
 .card{
-  width:30rem; 
+  min-width: 300px;
   float:left; 
-  padding:2px; 
+  padding:20px; 
   margin:5rem;
+}
+
+a{
+  text-decoration: none;
+  color: #000000;
 }
 
 

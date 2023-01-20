@@ -2,41 +2,39 @@
 <%- include('../partials/nav') %>
 <div id="profile-data"> 
   <h1> <%= profile.name %> </h1>
-  <form action="/profiles/<%=profile._id%>/dogears" method="get">
-    <button type="submit">add a dogear</button>
-  </form>
 </div>
-  <div>
-    <label for="dogear-library">Current Books:</label>
-      <ul id="dogear-library" style="list-style: none;">
-        <% profile.dogears.forEach(dogear => { %>
-          <% if (!dogear.completed) { %>
-            <li>
-              <div class="card" style="width:30rem; float:left; padding:2px; margin:5rem;">
-                <h4 class="card-title"><%= dogear.name %></h4>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">notes:<%= dogear.notes ? `${dogear.notes}` : 'add notes about where you left off' %></li>
-                  <li class="list-group-item">current page: <%= dogear.currentPage %> </li>
-                  <li class="list-group-item">
-                    <form action="/profiles/<%=user.profile._id%>/dogears/<%=dogear._id%>" method="GET" style="display:inline-block">
-                      <button> update dogear</button>
-                    </form>
-                  </li>
-              </ul>
-          </li>
-        <% } %>
-      <% }) %>
-      </ul>
-    </div>
-    <div>
-      <label for="completedDogear-library">Finished Books:</label>
-      <ul id="completedDogear-library" style="list-style: none;">
-      <% profile.dogears.forEach(dogear => { %>
-        <% if (dogear.completed) { %>
-  
-        <li>
-          <div class="card" style="width:30rem; float:left; padding:2px; margin:5rem;">
-              <h4 class="card-title"><%= dogear.name %></h4>
+<div class="card" style="clear:left;margin:0 auto;">
+  <form action="/profiles/<%=profile._id%>/dogears" method="get">
+    <button type="submit" style="font-size:10px;">add a dogear</button>
+  </form>
+  <label for="dogear-library">Current Books:</label>
+  <div class="card-group" id="dogear-library" style="list-style:none;">
+          <% profile.dogears.forEach(dogear => { %>
+            <% if (!dogear.completed) { %>
+              <li>
+                <div class="card" style="width:30rem; float:left; padding:2px; margin:0 auto;">
+                  <h4 class="card-title"><%= dogear.name %></h4>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">notes:<%= dogear.notes ? `${dogear.notes}` : 'add notes about where you left off' %></li>
+                    <li class="list-group-item">current page: <%= dogear.currentPage %> </li>
+                    <li class="list-group-item">
+                      <form action="/profiles/<%=user.profile._id%>/dogears/<%=dogear._id%>" method="GET" style="display:inline-block">
+                        <button> update dogear</button>
+                      </form>
+                    </li>
+                </ul>
+                </div>
+          <% } %>
+        <% }) %>
+  </div>
+</div>
+<div class="card" style="clear:left;margin:0 auto;">
+  <label for="completedDogear-library">Finished Books:</label>
+  <div class="card-group" id="completedDogear-library">
+    <% profile.dogears.forEach(dogear => { %>
+      <% if (dogear.completed) { %>
+        <div class="card" style="width:30rem; float:left; padding:2px; margin:0 auto;">
+          <div class="card-title"><%= dogear.name %></div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">notes:<%= dogear.notes ? `${dogear.notes}` : 'add notes about where you left off' %></li>
                 <li class="list-group-item">current page: <%= dogear.currentPage %> </li>
@@ -44,39 +42,31 @@
                     <form action="/profiles/<%=user.profile._id%>/dogears/<%=dogear._id%>" method="GET" style="display:inline-block">
                       <button> update dogear</button>
                     </form>
-                    <form action="/profiles/<%= user.profile._id %>/dogears/<%= dogear._id %>?_method=DELETE" method="post" style="display:inline-block">
-                      <button> delete dogear</button>
-                    </form>
-                </li>
-              </ul>
             </div>
           </li>
         <% } %>
       <% }) %>
-  
-      </ul>
+        </div>
     </div>
   </div>
-  <div>
+  <div class="card" style="clear: left; margin:0 auto;">
     <label for="library">Library</label>
-    <ul id="library" style="list-style: none;">
+    <div class="card-group" id="library" >
     <% profile.library.forEach(book => { %>
-      <li>
-          <div class="card" style="width:30rem; float:left; padding:2px; margin:5rem;">
+          <div class="card" style="width:18rem; float:left; padding:5px; margin:0 auto;">
             <div class="card-title">
-              <h4><%= book.name %></h4> 
-              <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>?_method=DELETE" method="post">
+              <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>?_method=DELETE" method="post" >
+                <%= book.name %> 
                 <input type="hidden" name="bookHandler" value="<%=book._id%>">
-                <button type="submit">x</button>
+                <button type="submit" style="font-size: 10px; padding:0 auto;">remove</button>
               </form>
           </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">length: <%= book.pageCount %> </li>
             </ul>
           </div>
-      </li>
     <% }) %>
-    </ul>
+        </div>
   </div>
 
 <%- include('../partials/footer') %>

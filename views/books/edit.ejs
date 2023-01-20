@@ -1,5 +1,6 @@
 <%- include('../partials/html-head') %> 
-<%- include('../partials/nav') %> 
+<%- include('../partials/nav') %>
+<div class="card">
 <form action="/books/<%=book.id%>?_method=PUT" method="post">
   <label for="name-input">Book Title</label>
   <input type="text" name="name" id="name-input" value='<%= book.name %>'>
@@ -16,4 +17,5 @@
   </select> 
   <button>update</button>
 </form>
+</div>
 <%- include('../partials/footer') %> 
