@@ -29,7 +29,7 @@
       </ul>
     </div>
     <div>
-      <label for="completedDogear-library">Completed Books:</label>
+      <label for="completedDogear-library">Finished Books:</label>
       <ul id="completedDogear-library" style="list-style: none;">
       <% profile.dogears.forEach(dogear => { %>
         <% if (dogear.completed) { %>
@@ -63,7 +63,13 @@
     <% profile.library.forEach(book => { %>
       <li>
           <div class="card" style="width:30rem; float:left; padding:2px; margin:5rem;">
-            <h4 class="card-title"><%= book.name %></h4>
+            <div class="card-title">
+              <h4><%= book.name %></h4> 
+              <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>?_method=DELETE" method="post">
+                <input type="hidden" name="bookHandler" value="<%=book._id%>">
+                <button type="submit">x</button>
+              </form>
+          </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">length: <%= book.pageCount %> </li>
             </ul>

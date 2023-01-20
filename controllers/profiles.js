@@ -113,7 +113,7 @@ function saveBook(req,res){
   .then(profile=>{
     profile.library.push(req.body.targetBook)
     profile.save()
-    res.redirect('/books')
+    res.redirect(`/profiles/${req.user.profile._id}`)
   })
   .catch(err => {
     console.log(err)
@@ -121,9 +121,20 @@ function saveBook(req,res){
   })
 }
 
+function tossBook(req,res){
+  Profile.findById(req.user.profile._id)
+  .then(profile=>{
+    let idx = profile.library.indexOf(req.body.bookHandler);
+    profile.library.splice(idx,1)
+    profile.save()
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
 export{
   show,
   saveBook,
+  tossBook,
   newDogear,
   createDogear,
   editDogear,

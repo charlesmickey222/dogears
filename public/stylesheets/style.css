@@ -34,7 +34,9 @@ main {
   justify-content: center;
   flex-direction: column;
 }
-
+button{
+  display: inline-block;
+}
 .navbar{
   color:white;
   text-decoration: none;

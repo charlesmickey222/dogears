@@ -18,6 +18,8 @@ router.put('/:id/dogears/:id', isLoggedIn, profilesCtrl.updateDogear)
 
 router.delete('/:id/dogears/:id', isLoggedIn, profilesCtrl.deleteDogear)
 
+router.delete('/:id/library/:id', isLoggedIn, profilesCtrl.tossBook)
+
 export {
   router
 }

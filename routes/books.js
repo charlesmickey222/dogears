@@ -6,7 +6,6 @@ const router = Router();
 
 router.get('/', booksCtrl.index);
 
-
 router.post('/', booksCtrl.create)
 
 router.get('/:id', booksCtrl.show)

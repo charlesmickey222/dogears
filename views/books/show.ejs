@@ -8,6 +8,9 @@
       <a href="/books/<%= book._id%>/edit">
       <button>Edit Book</button>
       </a>
+      <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
+        <button type="submit">x</button>
+      </form>
   <%}else{%> 
     <h2>posted by: <%= book.poster.name %></h2>
   <%}} %>

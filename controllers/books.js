@@ -4,7 +4,7 @@ import { Profile } from "../models/profile.js";
 
 function index(req,res){
   Book.find({})
-  .then(books=>{
+  .then((books)=>{
     Author.find({})
     .then(authors=>{
     res.render('books/index',{
@@ -24,7 +24,6 @@ function create(req,res){
   req.body.poster = req.user.profile._id
   let temp = req.body.authors
   req.body.authors = [temp]
-  req.body.
   Book.create(req.body)
   .then(book=>{
     res.redirect('/books')

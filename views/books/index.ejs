@@ -21,15 +21,12 @@
     <% books.forEach(book => { %>
     <li>
       Book: <a href="/books/<%=book._id%>"> <%= book.name %></a>
-      <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>" method="POST">
-        <input type="hidden" value="<%=book._id%>" name="targetBook">
-        <button type="submit">save to your Library</button>
-      </form>
-      <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
-        <button type="submit">x</button>
-      </form>
+        <form action="/profiles/<%=user.profile._id%>/library/<%=book._id%>" method="POST">
+          <input type="hidden" value="<%=book._id%>" name="targetBook">
+          <button type="submit">save to your Library</button>
+        </form>
+      <% }) %>
     </li>
-    <% }) %>
     </ul>
 <% }else{ %>
   <h1>Log In to add and see books</h1>
