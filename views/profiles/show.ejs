@@ -11,7 +11,7 @@
     <% profile.dogears.forEach(dogear => { %>
       <li>
           <div class="card" style="width:30rem; float:left; padding:2px; margin:5rem;">
-            <h4 class="card-title"><%= dogear.book.name %></h4>
+            <h4 class="card-title"><%= dogear.name %></h4>
             <p class="card-subtitle mb-1">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">started:<% if (dogear.started){%> &check; <% } %></li>

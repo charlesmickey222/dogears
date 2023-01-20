@@ -5,12 +5,7 @@ import { Dogear } from "../models/dogear.js";
 function show(req,res){
     Profile.findById(req.user.profile._id)
     .populate("library")
-    .populate({
-      path:"dogears",
-      populate: {
-        path:'book',
-      }
-    })
+    .populate("dogears")
     .then(profile=>{
       Book.find({})
       .then(books=>{
@@ -54,12 +49,13 @@ function newDogear(req,res){
 
 function createDogear(req,res){
   Book.findById(req.body.book)
-  .then(book=>{})
+  .then(book=>{
   Profile.findById(req.user.profile._id)
   .then(profile=>{
     req.body.started = true
     req.body.owner = req.user.profile._id
-    //req.body.name =
+    req.body.name = book.name;
+    req.body.completed = false;
     Dogear.create(req.body)
     .then(dogear =>{
       profile.dogears.push(dogear)
@@ -74,6 +70,7 @@ function createDogear(req,res){
   .catch(err => {
     console.log(err)
     res.redirect(`/books`)
+  })
   })
 }
 
@@ -90,6 +87,18 @@ function editDogear(req,res){
       console.log(err)
       res.redirect(`/books`)
     })
+}
+
+function updateDogear(req,res){
+  req.body.completed = Boolean(req.body.completed)
+  Dogear.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  .then(dogear=>{
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/books`)
+  })
 }
 
 function saveBook(req,res){
@@ -112,4 +121,5 @@ export{
   newDogear,
   createDogear,
   editDogear,
+  updateDogear
 }

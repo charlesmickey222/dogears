@@ -14,6 +14,8 @@ router.post('/:id/dogears', isLoggedIn, profilesCtrl.createDogear)
 
 router.get('/:id/dogears/:id', isLoggedIn, profilesCtrl.editDogear)
 
+router.put('/:id/dogears/:id', isLoggedIn, profilesCtrl.updateDogear)
+
 export {
   router
 }
